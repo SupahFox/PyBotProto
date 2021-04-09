@@ -21,7 +21,7 @@ async def on_message(message):
   if message.content.startswith(prefix + 'hello'):
     await message.channel.send('Hello!')
 
-  if message.content.startswith('py!hello'):
+  if message.content.startswith(prefix + 'reason'):
     await message.channel.send('Esto es una prueba de la libreria discord.py que posiblemente se agregue al bot principal. Ignoren esto.')
 
 #READY
