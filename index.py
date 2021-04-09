@@ -33,7 +33,7 @@ async def on_ready():
     print(f'{client.user} Se conectó a discord!')
 
     print(
-        f'{client.user} is connected to the following guild:\n'
+        f'{client.user} está conectado a la siguiente guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
 client.run(TOKEN)
