@@ -9,8 +9,10 @@ load_dotenv()
 
 client = discord.Client()
 
-#PREFIX
-prefix= os.getenv('PREFIX')
+#ENV
+prefix = os.getenv('PREFIX')
+token = os.getenv('TOKEN')
+guild = os.genenv('GUILD')
 
 #COMMANDS
 @client.event
@@ -30,5 +32,9 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the game"))
     print(f'{client.user} Se conectó a discord!')
 
-client.run(os.getenv('TOKEN'))
+    print(
+        f'{client.user} is connected to the following guild:\n'
+        f'{guild.name}(id: {guild.id})'
+    )
+client.run(TOKEN)
 
