@@ -30,7 +30,7 @@ async def on_message(message):
 #READY
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name='the game'), status=discord.Status.do_not_disturb)
+    await client.change_presence(status=discord.Status.do_not_disturb, activity=discord.Game(name='the game'))
     #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the game"))
     print(f'{client.user} Se conectó a discord!')
 
