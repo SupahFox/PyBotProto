@@ -1,17 +1,27 @@
-#IMPORTAR LIBRERIAS
-import discord 
-from discord.ext import commands
+# bot.py
+import os
 
-#PREFIX
-bot= commands.Bot(command_prefix='py!')
+import discord
+from dotenv import load_dotenv
 
-#PING
-@bot.command()
-async def test(ctx):
-    await ctx.send('Esto es una prueba de la libreria discord.py que posiblemente se agregue al bot principal. Ignoren esto.')
-@bot.event
+load_dotenv()
+
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
+
+  if message.author == client.user:
+    return
+
+  if message.content.startswith('py!hello'):
+    await message.channel.send('Hello!')
+
+@client.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the game"))
-    print('Listo')
-#TOKEN
-bot.run('TOKEN')
+    print(f'{client.user} Se conectó a discord!')
+
+client.run(os.getenv('TOKEN'))
+
