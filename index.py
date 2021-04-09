@@ -5,14 +5,15 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-load_dotenv()
 
+#CLIENT
 client = discord.Client()
 
 #ENV
+load_dotenv()
 prefix = os.getenv('PREFIX')
 token = os.getenv('TOKEN')
-guild = os.genenv('GUILD')
+GUILD = os.getenv('GUILD')
 
 #COMMANDS
 @client.event
@@ -32,9 +33,16 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the game"))
     print(f'{client.user} Se conectó a discord!')
 
+    guild = discord.utils.find(lambda g: g.name == GUILD, client.guilds)
     print(
         f'{client.user} está conectado a la siguiente guild:\n'
-        f'{guild.name}(id: {guild.id})'
+        f'{guild}(id: {guild.id})'
     )
-client.run(TOKEN)
+
+class CustomClient(discord.Client):
+    async def on_ready(self):
+        print(f'{self.user} has connected to Discord!')
+
+        
+client.run(token)
 
