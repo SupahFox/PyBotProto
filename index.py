@@ -27,6 +27,11 @@ async def on_message(message):
   if message.content.startswith(prefix + 'reason'):
     await message.channel.send('Esto es una prueba de la libreria discord.py que posiblemente se agregue al bot principal. Ignoren esto.')
 
+  if message.content.startswith(prefix + 'gabito'):
+    embed=discord.Embed(title="si", description="si", color=discord.Colour.blue())
+    embed.set_image(url="https://cdn.discordapp.com/attachments/671170382010515466/774014254286110770/Troll_face.png")
+    embed.set_footer(text="chupame la pija bobo")
+    await message.channel.send(embed=embed)
 #READY
 @client.event
 async def on_ready():
